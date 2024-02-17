@@ -11,33 +11,38 @@
 <body style="background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(./img/hero-bg\ \(1\).jpg); background-size: cover; background-position: center;">
     <section>
         <div class="container py-5">
-            <div class="row">
+            <div class="row m-lg-0 m-3">
                 <div class="col-lg-2"></div>
 
                 <div class="col-lg-8 col-12 p-lg-4 p-3 border border-3 shadow mb-5 bg-body rounded-3 text-dark">
-                    <div class="">
+                    <div class="mb-4">
                         <h2 class="">Cart items</h2>
                     </div>
-               <div class="d-flex flex-lg-row flex-column justify-content-center">
-                    <div class="me-3"><img src="./img/no_img.jpg" class="img-fluid mb-4" id="cartProdImg" alt="" style="width: 100%; height: 40vh;"></div>
-                    <div class="d-flex flex-column me-3">
-                        <div class="col-12 fw-bold mb-2">Product</div>
-                        <div class="col-12"><span id="cartProdTitle"></span></div> 
+                <div class="col-12 d-flex flex-lg-row flex-column justify-content-center align-items-center bg-light p-4">
+                <div class="col-lg-3 col-12 d-flex justify-content-lg-center justify-content-start">
+                    <div class="me-lg-3 me-0"><img src="./img/no_img.jpg" class="img-fluid mb-lg-0 mb-4" id="cartProdImg" alt="" style="width: 100px; height:100px; object-fit: contain;"></div>
+                </div>
+                <div class="col-lg-9 col-12 d-flex flex-lg-row flex-column justify-content-center ">
+                    <div class="d-flex flex-lg-column flex-row me-lg-4 me-0">
+                        <div class="col-lg-12 col-6 text-start fw-bold mb-2">Product</div>
+                        <div class="col-lg-12 col-6 text-lg-start text-end"><span id="cartProdTitle"></span></div> 
                     </div>
 
-                    <div class="d-flex flex-column me-3">
-                        <div class="fw-bold mb-2">Orginal price</div>
-                        <div class="col-12" ><span id="cartProdPrice"></span></div>
+                    <div class="d-flex flex-lg-column flex-row me-lg-4 me-0">
+                        <div class="col-lg-12 col-6 text-start fw-bold mb-2">Orginal price</div>
+                        <div class="col-lg-12 col-6 text-lg-start text-end" >$<span id="cartProdPrice"></span></div>
                     </div>
 
-                    <div class="d-flex flex-column me-3">
-                        <div class="col-12 fw-bold mb-2">items count</div>
-                        <div class="col-12" ><span id="cardProdCount"></span></div>
+                    <div class="d-flex flex-lg-column flex-row me-lg-4 me-0">
+                        <div class="col-lg-12 col-6 text-start fw-bold mb-2">Product count</div>
+                        <div class="col-lg-12 col-6 text-lg-start text-end" ><span id="cardProdCount"></span></div>
                     </div>
-                    <div class="d-flex flex-column me-3">
-                        <div class="col-12 fw-bold mb-2">discount price</div>
-                        <div class="col-6" >Discount:-<span id="offerPrecent"></span>%Offer  $<span id="cardProdCurPrice"></span></div>
+                    <div class="d-flex flex-lg-column flex-row me-lg-4 me-0">
+                        <div class="col-lg-12 col-6 text-start fw-bold mb-2">Discount price</div>
+                        <div class="col-lg-12 col-6 text-lg-start text-end">-<span id="offerPrecent"></span>%Offer  $<span id="cardProdCurPrice"></span></div>
                     </div>
+                </div>
+                    
                     <!-- <div class="" id="cardProdCurPrice">1120</div> -->
                 </div>
             
@@ -46,7 +51,7 @@
                         <a href="product.html" class="btn btn-primary">Back</a>
                     </div>
                     <div class="col-6 text-end">
-                        <a href="index.html" class="btn btn-primary" id="cartAddProduct">Add Product</a>
+                        <a href="index.html" class="btn btn-success" id="cartAddProduct">Add Product</a>
                     </div>
                    
                 </div>
