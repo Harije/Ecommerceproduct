@@ -1,0 +1,5 @@
+.productform{
+   /* background: linear-gradient(rgb(255, 0, 170), rgb(11, 0, 128)); */
+   background-color: transparent !important;
+   backdrop-filter: blur(5px);
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Ecommerce page</title>
+</head>
+<body>
+    <section style="background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(./img/1626498811833.jpg); background-size: cover; background-position: center;" >
+        <div class="container py-5">
+            <div class="row m-lg-0 m-3">
+                <div class="col-lg-4"></div>
+
+                <div class="productform col-lg-4 col-12 p-lg-5 p-3 border border-3 shadow p-3 mb-5 bg-body rounded-3 text-light">
+                    <form action="validateSubmit" method="post">
+                    <h1 class="text-center">ADD PRODUCT</h1><br>
+
+
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Product Title<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label>
+                            <input type="text" class="form-control" placeholder="Enter your Product Name" id="productTitle" onkeyup="ValidateproductTitle()">
+                            <span id="productTitleError" style="display: none;">* Product title is Required</span>
+                          </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Description<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label>
+                            <textarea class="form-control" rows="3" id="productDescription" onkeyup="validateDescription()" placeholder="Enter product Description"></textarea>
+                            <span id="productDescriptionError" style="display: none;">* Product Description cannont be empty</span>
+                          </div>
+                    </div>
+
+                    <div class="col-12 d-flex">
+                        <div class="mb-4 col-9 me-2">
+                            <label for="formFile" class="form-label fw-bold">Product Image<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label>
+                            <input class="form-control" type="file" id="formFile" accept="image/*" onchange="loadFile(event)">
+                            <span id="productImageError" style="display: none;">* Image cannot be empty</span>
+                            <!-- <span id="imgError" style="display: none;">* Image cannot be empty</span> -->
+                        </div>
+                        <div class="col-3 ">
+                            <img id="output" src="./img/images.png" style="height: 100px; object-fit:contain;" class="w-100"/>
+                        </div>
+                    </div>
+                
+                    <div class="col-12 d-flex gap-lg-5 gap-4 justify-content-center">
+                        <div class="col-5">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Price<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label>
+                                <input type="number" class="form-control" placeholder="0.00" id="productprice" onkeyup="validatePrice()">
+                                <span id="productPriceError" style="display: none;">* Enter Price</span>
+                              </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-3" onchange="validateDiscountType(event)">
+                                <label class="form-label fw-bold">discount<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label>
+                                <select class="form-select" aria-label="Default select example" id="discountType" >
+                                    <option selected value="">discount type</option>
+                                    <option value="1">percentage%</option>
+                                    <option value="2">Float</option>
+                                </select>
+                                <span id="discountTypeError" style="display: none; color: red;">* select discount type</span>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex flex-lg-row flex-column gap-lg-5 gap-4 justify-content-center">
+                        <div class="col-lg-5 col-12">
+                            <div class="mb-lg-3 mb-0">
+                                <label class="form-label fw-bold">discount Price<span class="mx-1 fs-5" style="color:orangered;">*</span>:</label><br>
+                                <input type="number" class="form-control" id="productdiscount" placeholder="0.00" onkeyup="validatediscount()">
+                                <span id="productdiscountError" style="display: none;">* Enter discount</span>
+                              </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-3 mt-lg-1 mt-0">
+                                <label class="form-label fw-bold">Sales Price :</label><br>
+                                <input type="number" class="form-control" readonly id="salesPrice" placeholder="0.00">
+                              </div>
+                        </div>
+                        
+                    </div>
+              
+
+                    <div class="mx-5 mt-5">
+                        <input class="form-control" type="button" value="submit" id="validateSubmit" onclick="validate(event)">
+                    </div>
+
+
+                    </form>
+                </div>
+
+                <div class="col-lg-4"></div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+<script>
+
+
+// =============================================product title=============================================
+    function ValidateproductTitle() {
+    var prodTitle = document.getElementById('productTitle').value;
+    if (prodTitle) {
+      if (prodTitle.length > 2) {
+        document.getElementById('productTitle').style = "border : 3px solid green;";
+        document.getElementById('productTitleError').style = "display:none;";
+        return true;
+      }
+      else {
+        document.getElementById('productTitle').style = "border : 3px solid red";
+        document.getElementById('productTitleError').style = "display:block;";
+        document.getElementById('productTitleError').innerHTML = "* length should be greater than 2";
+        return false;
+      }
+    }
+    else {
+      document.getElementById('productTitle').style = "border : 2px solid red";
+      document.getElementById('productTitleError').style = "display:block";
+      document.getElementById('productTitleError').innerHTML = "* Product title is Required";
+      return false;
+    }
+  }
+// =========================================== description =====================================
+  function validateDescription(){
+    var prodDesc = document.getElementById('productDescription').value;
+    if(prodDesc){
+        if(prodDesc.length > 10) {
+            document.getElementById('productDescription').style="border :3px solid green";
+            document.getElementById('productDescriptionError').style="display:none";
+            return true;
+        }
+        else{
+            document.getElementById('productDescription').style="border:3px solid red";
+            document.getElementById('productDescriptionError').style="display:block";
+            document.getElementById('productDescriptionError').innerHTML="* length should be greater than 10";
+            return false;
+        }
+    }
+    else{
+        document.getElementById('productDescription').style="border:3px solid red";
+        document.getElementById('productDescriptionError').style="display:block";
+        document.getElementById('productDescriptionError').innerHTML = "* Product discribe cannont be empty";
+        return false;
+    }
+  }
+
+// ================================================== product img =====================
+function imgCheck() {
+    let imgFile = document.getElementById('formFile').files[0];
+    if (imgFile) {
+      if (checkExtension(imgFile)) {
+
+        document.getElementById('formFile').style = "border : 3px solid green;";
+        document.getElementById('productImageError').style = "display:none;";
+       return true;
+      }
+    }
+    else {
+      document.getElementById('formFile').style = "border : 3px solid red;";
+      document.getElementById('productImageError').style = "display:block;";
+      document.getElementById('productImageError').innerHTML = "* Image cannot be Empty";
+      return false;
+    }
+  }
+
+function loadFile(event){
+
+var imgFile = event.target.files[0]
+var output = document.getElementById('output');
+
+if (imgFile) {
+  document.getElementById('formFile').style = "border : 3px solid green;";
+  document.getElementById('productImageError').style = "display:none;";
+}
+else {
+  document.getElementById('formFile').style = "border : 3px solid red;";
+  document.getElementById('productImageError').style = "display:block;";
+  document.getElementById('productImageError').innerHTML = "* Image cannot be Empty";
+}
+
+if (checkExtension(imgFile)) {
+  output.src = URL.createObjectURL(imgFile);
+  output.onload = function () {
+    URL.revokeObjectURL(output.src)
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const imageData = event.target.result;
+    localStorage.setItem('imageData', imageData);
+  };
+  reader.readAsDataURL(imgFile);
+}
+}
+
+function checkExtension(imgFile) {
+    var extension = imgFile.type.split('/')[1].toLowerCase();
+    if (extension == 'jpg' || extension == 'png' || extension == 'jpeg') {
+      document.getElementById('formFile').style = "border : 3px solid green;";
+      document.getElementById('productImageError').style = "display:none;";
+      return true;
+    }
+    else {
+      document.getElementById('formFile').style = "border : 3px solid red;";
+      document.getElementById('productImageError').style = "display:block;";
+      document.getElementById('productImageError').innerHTML = "* Image extension should be jpg, png, jpeg";
+      return false;
+    }
+
+  }
+
+// ====================================================================================
+function validatePrice() {
+    let productPrice = document.getElementById('productprice').value;
+    if (productPrice) {
+      if (productPrice > 1) {
+        document.getElementById('productprice').style = "border : 3px solid green";
+        document.getElementById('productPriceError').style = "display:none;";
+       return true;
+
+      }
+      else {
+        document.getElementById('productprice').style = "border : 2px solid red";
+        document.getElementById('productPriceError').style = "display:block;";
+        document.getElementById('productPriceError').innerHTML = "* Enter Price >1";
+        return false;
+      }
+
+    }
+    else {
+      document.getElementById('productprice').style = "border : 2px solid red";
+      document.getElementById('productPriceError').style = "display:block";
+      document.getElementById('productPriceError').innerHTML = "* Enter price";
+      return false;
+    }
+
+  }
+//   ==================================================================================
+function validateDiscountType() {
+    var discountType = document.getElementById('discountType').value;
+    if (discountType === "") {
+        document.getElementById('discountTypeError').style = "display:block";
+        document.getElementById('discountType').style = "border:3px solid red";
+
+        return false;
+    } else {
+        document.getElementById('discountTypeError').style = "display:none";
+        document.getElementById('discountType').style = "border:3px solid green";
+        return true;
+    }
+}
+
+// ===========================================================================================
+function validatediscount(){
+    let productdiscount = document.getElementById('productdiscount').value;
+    if (productdiscount) {
+      if (productdiscount > 1) {
+        document.getElementById('productdiscount').style = "border : 3px solid green";
+        document.getElementById('productdiscountError').style = "display:none;";
+       return true;
+
+      }
+      else {
+        document.getElementById('productdiscount').style = "border : 3px solid red";
+        document.getElementById('productdiscountError').style = "display:block;";
+        document.getElementById('productdiscountError').innerHTML = "* Enter Price >1";
+        return false;
+      }
+
+    }
+    else {
+      document.getElementById('productdiscount').style = "border : 3px solid red";
+      document.getElementById('productdiscountError').style = "display:block";
+      document.getElementById('productdiscountError').innerHTML = "* Enter discount";
+      return false;
+    }
+}
+// =====================================================================================
+// function calculateSalesPrice() {
+//     var productPrice = parseFloat(document.getElementById('productprice').value);
+//     var discountType = document.getElementById('discountType').value;
+//     var discountValue = parseFloat(document.getElementById('productdiscount').value);
+//     var salesPrice = 0;
+
+//     if (discountType === "1") { // Percentage discount
+//         salesPrice = productPrice - (productPrice * (discountValue / 100));
+//     } else if (discountType === "2") { // Float discount
+//         salesPrice = productPrice - discountValue;
+//     }
+
+//     // Display the calculated sales price
+//     document.getElementById('salesPrice').value = salesPrice.toFixed(2); // Assuming 2 decimal places for currency
+
+//     return true;
+// }
+
+
+function calculateSalesPriceOnChange() {
+    var productPrice = parseFloat(document.getElementById('productprice').value);
+    var discountType = document.getElementById('discountType').value;
+    var discountValue = parseFloat(document.getElementById('productdiscount').value);
+    var salesPrice = 0;
+
+    if (discountType === "1") { // Percentage discount
+        salesPrice = productPrice - (productPrice * (discountValue / 100));
+    } else if (discountType === "2") { // Float discount
+        salesPrice = productPrice - discountValue;
+    }
+
+    // Display the calculated sales price
+    document.getElementById('salesPrice').value = salesPrice.toFixed(2); // Assuming 2 decimal places for currency
+}
+
+// Bind the onchange event to trigger the calculation
+document.getElementById('productprice').onchange = calculateSalesPriceOnChange;
+document.getElementById('productdiscount').onchange = calculateSalesPriceOnChange;
+document.getElementById('discountType').onchange = calculateSalesPriceOnChange;
+
+// ====================================================================================
+    function validate(event) {
+    var isValidateproductTitle = ValidateproductTitle();
+    var isvalidateDescription = validateDescription();
+    var isValidImg = imgCheck();
+    var isValidPrice = validatePrice();
+    var isValidDiscountType = validateDiscountType();
+    var isvalidatediscount = validatediscount();
+    var iscalculateSalesPriceOnChange = calculateSalesPriceOnChange(); 
+
+    if (isValidateproductTitle && isvalidateDescription && isValidImg && validatePrice && validateDiscountType && validatediscount && calculateSalesPriceOnChange) {
+        // Your submission logic here
+       
+        localStorage.setItem('productTitle', productTitle.value)
+        localStorage.setItem('productDescription',productDescription.value)
+        localStorage.setItem('productprice', productprice.value)
+        localStorage.setItem('salesPrice', salesPrice.value)
+        localStorage.setItem('productdiscount',productdiscount.value)
+        window.location.href='product.html';
+        return true;
+    } else {
+        return false;
+    }
+}
+    
+</script>
