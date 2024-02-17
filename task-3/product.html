@@ -15,19 +15,20 @@
         <div class="container py-5">
             <div class="row m-lg-0 m-3">
                 <div class="col-lg-4"></div>
-                <div class="col-lg-4 col-12 p-lg-4 p-3 border border-3 shadow mb-5 bg-body rounded-3 text-dark" id="productView">
-                    <div class="p-0 mb-3 px-lg-5 px-3">
-                        <img src="./img/no_img.jpg" id="prodImg" alt="" class="img-fluid" style="width: 100%; height: 40vh;">
+                <div class="col-lg-4 col-12 p-lg-4 p-3 border border-3 shadow mb-5 bg-light rounded-3 text-dark" id="productView">
+                    <div class="col-12 d-flex justify-content-center p-0 mb-4 pt-3">
+                        <img src="./img/no_img.jpg" id="prodImg" alt="" class="img-fluid border rounded" style=" height: 250px; object-fit:contain;">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 px-lg-4 px-3">
                         <div class="text-start">
-                            <h2 id="newProdTitle" class="fw-bold fs-1">product</h2>
-                            <p id="newProdDesc" class="fw-lighter fs-5"   >product details</p>
+                            <h2 id="newProdTitle" class="fw-bold text- fs-2">product</h2>
 
-                            <p id="originalPrice" class="fw-lighter fs-5 "><del>Original Price:M.R.P $<span id="originalPriceValue"></span></del></p>
+                            <p id="newProdDesc" class="text-secondary fs-5"><span>details :</span>product details</p>
+
+                            <p id="originalPrice" class="fw-lighter fw-bold fs-6 "><del>Original Price : M.R.P $<span class="text-danger" id="originalPriceValue"></span></del></p>
                         
-                            <p id="discount" class="fw-lighter fs-5">Discount:-<span id="offerPrecent"></span>%Offer  $<span id="discountValue"></span></p>
+                            <p id="discount" class="fw-lighter fw-bold fs-6">Discount : -<span id="offerPrecent"></span>%Offer  $<span style="color:green;" id="discountValue"></span></p>
 
 
 
@@ -46,20 +47,20 @@
                                     <span id="limitReach" class="ml-2" style="display: none;"></span>
                                 </div>
                                 <div>
-                                    <p class="cost fs-4">$<span id="price"></span></p>
+                                    <p class="cost fs-4" style="color: green;">$<span id="price"></span></p>
                                 </div>
                             </div>
 
                            
                         </div>
 
-                        <div  class="d-flex my-4" >
+                        <div  class="d-flex mt-4" >
                                 
                                 <div class="col-6">
-                                    <a href="index.html" role="button" class="btn btn-primary px-5 py-2"> Back</a>
+                                    <a href="index.html" role="button" class="btn btn-primary px-lg-5 px-4 py-2"> BACK</a>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <a href="addcart.html" role="button" class=" btn btn-danger py-2" onclick="addToCart()">ADD TO CART</a>
+                                    <a href="addcart.html" role="button" class=" btn btn-danger px-lg-5 px-3 py-2" onclick="addToCart()">ADDCART</a>
                                 </div>
 
                         </div>
@@ -74,7 +75,6 @@
     </section>
 
 
-    <!-- <script src="../Bootstrap/assets/js/jquery.slim.min.js"></script> -->
     <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 
 </body>
