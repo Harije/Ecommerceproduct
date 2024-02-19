@@ -9,7 +9,7 @@
 </head>
 <body>
     <section style="background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(./img/1626498811833.jpg); background-size: cover; background-position: center;" >
-        <div class="container py-5">
+        <div class="container py-md-5 py-2">
             <div class="row m-lg-0 m-3">
                 <div class="col-lg-4"></div>
 
@@ -84,7 +84,7 @@
                     </div>
               
 
-                    <div class="mx-5 mt-5">
+                    <div class="mx-5 mt-lg-5 mt-3">
                         <input class="form-control" type="button" value="submit" id="validateSubmit" onclick="validate(event)">
                     </div>
 
@@ -338,10 +338,10 @@ document.getElementById('discountType').onchange = calculateSalesPriceOnChange;
     if (isValidateproductTitle && isvalidateDescription && isValidImg && validatePrice && validateDiscountType && validatediscount && calculateSalesPriceOnChange) {
         // Your submission logic here
        
-        localStorage.setItem('productTitle', productTitle.value)
+        localStorage.setItem('productTitle',productTitle.value)
         localStorage.setItem('productDescription',productDescription.value)
-        localStorage.setItem('productprice', productprice.value)
-        localStorage.setItem('salesPrice', salesPrice.value)
+        localStorage.setItem('productprice',productprice.value)
+        localStorage.setItem('salesPrice',salesPrice.value)
         localStorage.setItem('productdiscount',productdiscount.value)
         window.location.href='product.html';
         return true;
