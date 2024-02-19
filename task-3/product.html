@@ -12,7 +12,7 @@
 
 <body style="background:linear-gradient(rgb(1 1 2 / 57%), rgb(1 1 2 / 57%)),url(./img/bg.jpg); background-size: cover; background-position: center;">
     <section>
-        <div class="container py-5">
+        <div class="container py-lg-5 py-2">
             <div class="row m-lg-0 m-3">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4 col-12 p-lg-4 p-3 border border-3 shadow mb-5 bg-light rounded-3 text-dark" id="productView">
@@ -99,7 +99,7 @@
 
         document.getElementById('prodCount').value = 1;
         const imageDisplay = document.getElementById('prodImg');
-        const imageData = localStorage.getItem('imageData')
+        const imageData = localStorage.getItem('imageData');
         if (imageData) {
             imageDisplay.src = imageData;
         } else {
@@ -113,7 +113,7 @@
         var count = parseInt(document.getElementById('prodCount').value);
         if (count < 10) {
             document.getElementById('prodCount').value = ++count;
-            currentPrice = count * price
+            currentPrice = count * price;
             document.getElementById('price').innerHTML = currentPrice;
             document.getElementById('limitReach').style = "display:none;"
         }
@@ -126,7 +126,7 @@
         var count = parseInt(document.getElementById('prodCount').value);
         if (count > 1) {
             document.getElementById('prodCount').value = --count;
-            currentPrice = currentPrice - price
+            currentPrice = currentPrice - price;
             document.getElementById('price').innerHTML = currentPrice;
             document.getElementById('limitReach').style = "display:none;"
 
@@ -136,6 +136,10 @@
             document.getElementById('limitReach').style = "display:block; color:red;"
         }
     }
+//    Get the original price and discount percentage from localStorage
+// Get the original price and discount percentage from localStorage
+
+
 
     function addToCart() {
         console.log(currentPrice);
